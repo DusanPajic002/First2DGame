@@ -28,6 +28,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_y61g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ww5it")
 }],
 "loop": true,
 "name": &"idle",
@@ -65,3 +92,4 @@ animation = &"idle"
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_player_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
