@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyvdxaay24su" path="res://player/Player.tscn" id="2_xw7nu"]
 [ext_resource type="PackedScene" uid="uid://b0y1krii6ert8" path="res://backgrounds/gameBackground.tscn" id="3_dpv18"]
 [ext_resource type="Texture2D" uid="uid://dcrywo6pjhr3k" path="res://Sunny-land-files/Sunny-land-files/Graphical Assets/environment/tileset.png" id="4_iuc4h"]
-[ext_resource type="PackedScene" uid="uid://dkt0hvex37pd4" path="res://enemys/frog/frog.tscn" id="5_hie4j"]
+[ext_resource type="PackedScene" uid="uid://dkt0hvex37pd4" path="res://enemys/frog/character_body_2d.tscn" id="5_hie4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0h5cy"]
 texture = ExtResource("4_iuc4h")
@@ -438,6 +438,9 @@ sources/0 = SubResource("TileSetAtlasSource_0h5cy")
 [node name="world" type="Node2D"]
 script = ExtResource("1_pq04y")
 
+[node name="Player" parent="." instance=ExtResource("2_xw7nu")]
+position = Vector2(763, 519)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_f1gfc")
 format = 2
@@ -445,12 +448,5 @@ layer_0/tile_data = PackedInt32Array(2555904, 65536, 5, 2621440, 65536, 5, 26869
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_dpv18")]
 
-[node name="players" type="Node2D" parent="."]
-
-[node name="Player" parent="players" instance=ExtResource("2_xw7nu")]
-position = Vector2(763, 519)
-
-[node name="mobs" type="Node" parent="."]
-
-[node name="Frog" parent="mobs" instance=ExtResource("5_hie4j")]
+[node name="Frog" parent="." instance=ExtResource("5_hie4j")]
 position = Vector2(564, 483)
