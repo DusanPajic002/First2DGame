@@ -7,10 +7,14 @@ var jumped = false
 var player 
 var chase = false 
 
+func _ready():
+	get_node("AnimatedSprite2D").play("idle")
+
 func _physics_process(delta):
 	# Add the gravity
 	velocity.y += gravity * delta
 	if chase == true:
+		print(get_node("AnimatedSprite2D").animation)
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		if velocity.y > 0:
@@ -26,8 +30,9 @@ func _physics_process(delta):
 			get_node("AnimatedSprite2D").flip_h = false
 		velocity.x = direction.x * SPEED
 	else:
-		get_node("AnimatedSprite2D").play("idle")	
-		velocity.x =0
+		if get_node("AnimatedSprite2D").animation != "death":
+			get_node("AnimatedSprite2D").play("idle")	
+			velocity.x = 0
 	move_and_slide()
 
 func _player_entered(body): 
@@ -40,8 +45,15 @@ func _player_exited(body):
 
 func _on_death_body_entered(body):
 	if body.name == "Player":
-		var player = get_node("../../players/Player") 
-		var direction = (player.position - self.position).normalized()
-		print(direction.y)
-		if direction.y < -0.9:
-			self.queue_free()
+		chase = false
+		velocity.y = 0
+		velocity.x = 0 
+		get_node("AnimatedSprite2D").play("death")
+		await get_node("AnimatedSprite2D").animation_finished
+		self.queue_free()
+
+
+
+func _on_deamge_body_entered(body):
+	if body.name == "Player":
+		body.health -= 3

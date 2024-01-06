@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dkt0hvex37pd4"]
+[gd_scene load_steps=18 format=3 uid="uid://dkt0hvex37pd4"]
 
 [ext_resource type="Script" path="res://enemys/frog/frog.gd" id="1_lhe48"]
 [ext_resource type="Texture2D" uid="uid://db2tpiuyvjpsm" path="res://Sunny-land-files/Sunny-land-files/Graphical Assets/sprites/enemy-death/enemy-death-1.png" id="2_gjl1r"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c5562gamdxyc8" path="res://Sunny-land-files/Sunny-land-files/Graphical Assets/sprites/frog/jump/frog-jump-2.png" id="7_f7prh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb1nr"]
-size = Vector2(21, 14)
+size = Vector2(18, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ptyy"]
 animations = [{
@@ -101,25 +101,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mow1u"]
-radius = 122.016
+radius = 115.017
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly1y8"]
-size = Vector2(19, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqsya"]
-size = Vector2(25, 14)
+size = Vector2(14, 15.75)
 
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_lhe48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -7)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_cb1nr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_2ptyy")
-animation = &"idle"
+animation = &"death"
 metadata/_edit_lock_ = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
@@ -131,16 +128,9 @@ shape = SubResource("CircleShape2D_mow1u")
 [node name="death" type="Area2D" parent="."]
 
 [node name="hitbox" type="CollisionShape2D" parent="death"]
-position = Vector2(0.5, -13)
+position = Vector2(0, -8.125)
 shape = SubResource("RectangleShape2D_ly1y8")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, -6)
-shape = SubResource("RectangleShape2D_oqsya")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_player_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_player_exited"]
 [connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_deamge_body_entered"]
