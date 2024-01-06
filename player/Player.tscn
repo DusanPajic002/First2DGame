@@ -290,9 +290,10 @@ frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.4, 1.4)
-limit_left = 0
-limit_right = 1252
-limit_bottom = 700
+limit_left = -30
+limit_top = 0
+limit_right = 1170
+limit_bottom = 680
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

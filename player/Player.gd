@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation = get_node("AnimationPlayer")
+var double_jump = true  
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -16,10 +17,13 @@ func _physics_process(delta):
 	var direction_y = Input.get_axis("ui_up", "ui_down")
 	
 	# Handle jump.
-	if is_on_floor() and ( Input.is_action_just_pressed("ui_accept") || direction_y == -1) :
+	if (is_on_floor() or double_jump) and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = JUMP_VELOCITY
 		animation.play("jump")
-
+		if not is_on_floor():
+			double_jump = false  # Iskoristite dvostruki skok
+		else:
+			double_jump = true 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if direction == -1:
