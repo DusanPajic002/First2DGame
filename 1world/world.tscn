@@ -453,4 +453,4 @@ position = Vector2(763, 519)
 [node name="mobs" type="Node" parent="."]
 
 [node name="Frog" parent="mobs" instance=ExtResource("5_hie4j")]
-position = Vector2(564, 483)
+position = Vector2(529, 513)
