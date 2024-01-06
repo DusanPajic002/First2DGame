@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6igdomg3cmkm"]
+[gd_scene load_steps=3 format=3 uid="uid://b6igdomg3cmkm"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_x32dt"]
+[ext_resource type="PackedScene" uid="uid://ca6bwx1qhx7d4" path="res://startPageBg.tscn" id="2_3r432"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
@@ -22,6 +23,8 @@ tooltip_text = "This is quit buttn
 "
 text = "Quit
 "
+
+[node name="startPageBG" parent="." instance=ExtResource("2_3r432")]
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -123,7 +123,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jf152"]
 resource_name = "crouch"
-length = 0.35
+length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -289,13 +289,12 @@ animation = &"crouch"
 frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.4, 1.4)
-limit_left = 0
-limit_right = 1252
+zoom = Vector2(1.6, 1.6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2vr27")
 }
+autoplay = "crouch"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
