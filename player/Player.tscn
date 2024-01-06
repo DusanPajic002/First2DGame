@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bhyvdxaay24su"]
+[gd_scene load_steps=31 format=3 uid="uid://bhyvdxaay24su"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_to1ql"]
 [ext_resource type="Texture2D" uid="uid://p45m54hd0kyc" path="res://Sunny-land-files/Sunny-land-files/Graphical Assets/sprites/player/hurt/player-hurt-1.png" id="2_60awp"]
@@ -276,6 +276,8 @@ _data = {
 "run": SubResource("Animation_6266u")
 }
 
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_j8q6n"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_to1ql")
 
@@ -304,3 +306,4 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_j8q6n")

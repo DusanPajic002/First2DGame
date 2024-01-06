@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var SPEED = 50
+var SPEED = 40
 const JUMP_VELOCITY = -300.0
-var jumped = false
 var player 
 var chase = false 
 
@@ -13,13 +12,11 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity
 	velocity.y += gravity * delta
-	if chase == true:
-		print(get_node("AnimatedSprite2D").animation)
+	if chase == true: 
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		if velocity.y > 0:
 			get_node("AnimatedSprite2D").play("fall")
-			jumped = true
 		else:
 			get_node("AnimatedSprite2D").play("jump")
 		player = get_node("../../players/Player") 
@@ -57,3 +54,5 @@ func _on_death_body_entered(body):
 func _on_deamge_body_entered(body):
 	if body.name == "Player":
 		body.health -= 3
+		if body.health <= 0:
+			body.queue_free()
