@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6igdomg3cmkm"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_x32dt"]
-[ext_resource type="PackedScene" uid="uid://ca6bwx1qhx7d4" path="res://startPageBg.tscn" id="2_3r432"]
+[ext_resource type="PackedScene" uid="uid://ca6bwx1qhx7d4" path="res://backgrounds/startPageBg.tscn" id="2_3r432"]
 
 [node name="main" type="Node2D"]
-texture_filter = 1
 script = ExtResource("1_x32dt")
 
 [node name="Play" type="Button" parent="."]
