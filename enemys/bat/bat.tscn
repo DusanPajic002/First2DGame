@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpcm6pmpuwevn"]
+
+[ext_resource type="Texture2D" uid="uid://d37archi5uplf" path="res://enemys/bat/bat1.png" id="1_cuvi4"]
+[ext_resource type="Script" path="res://enemys/bat/bat.gd" id="1_d08t4"]
+[ext_resource type="Texture2D" uid="uid://db2tpiuyvjpsm" path="res://enemys/deathAnimation/enemy-death-1.png" id="2_m7tl0"]
+[ext_resource type="Texture2D" uid="uid://c4j1puuno45jd" path="res://enemys/bat/bat2.png" id="2_wpt0p"]
+[ext_resource type="Texture2D" uid="uid://dx77fhpa0i8n8" path="res://enemys/bat/bat3.png" id="3_4y0a5"]
+[ext_resource type="Texture2D" uid="uid://bs7ghbbqp2ggv" path="res://enemys/deathAnimation/enemy-death-2.png" id="3_unbbq"]
+[ext_resource type="Texture2D" uid="uid://dqda33eglj5qg" path="res://enemys/deathAnimation/enemy-death-3.png" id="4_cdl2h"]
+[ext_resource type="Texture2D" uid="uid://bnbyy34xbnwam" path="res://enemys/bat/bat4.png" id="4_p6bc3"]
+[ext_resource type="Texture2D" uid="uid://op1e123xp85m" path="res://enemys/deathAnimation/enemy-death-4.png" id="5_5pav0"]
+[ext_resource type="Texture2D" uid="uid://f0jkiwm0s3s3" path="res://enemys/bat/bat5.png" id="5_kihb3"]
+[ext_resource type="Texture2D" uid="uid://blmhlaoyvsirn" path="res://enemys/deathAnimation/enemy-death-5.png" id="6_b2bvm"]
+[ext_resource type="Texture2D" uid="uid://bur86ps8m56p1" path="res://enemys/deathAnimation/enemy-death-6.png" id="7_8l4pe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtsvq"]
+radius = 9.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itx76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m7tl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_unbbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cdl2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5pav0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b2bvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8l4pe")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cuvi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wpt0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4y0a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p6bc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kihb3")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_geex2"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2jh5"]
+
+[node name="bat" type="CharacterBody2D"]
+script = ExtResource("1_d08t4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wtsvq")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -14)
+sprite_frames = SubResource("SpriteFrames_itx76")
+animation = &"death"
+
+[node name="killbox" type="Area2D" parent="."]
+
+[node name="killbox" type="CollisionShape2D" parent="killbox"]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_geex2")
+metadata/_edit_lock_ = true
+
+[node name="demagebox" type="Area2D" parent="."]
+
+[node name="demagebox" type="CollisionShape2D" parent="demagebox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_n2jh5")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="killbox" to="." method="_killbox_body_entered"]
+[connection signal="body_exited" from="killbox" to="." method="_on_killbox_body_exited"]
+[connection signal="body_entered" from="demagebox" to="." method="_on_demagebox_body_entered"]
