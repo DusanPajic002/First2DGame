@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://blmhlaoyvsirn" path="res://enemys/deathAnimation/enemy-death-5.png" id="6_b2bvm"]
 [ext_resource type="Texture2D" uid="uid://bur86ps8m56p1" path="res://enemys/deathAnimation/enemy-death-6.png" id="7_8l4pe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rkln"]
-size = Vector2(14, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtsvq"]
+radius = 9.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_itx76"]
 animations = [{
@@ -64,23 +64,22 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_geex2"]
 radius = 4.0
-height = 18.0
+height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq1qu"]
-size = Vector2(18, 13)
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2jh5"]
 
 [node name="bat" type="CharacterBody2D"]
 script = ExtResource("1_d08t4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.6524e-07, -9)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_6rkln")
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wtsvq")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -17)
+position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_itx76")
-animation = &"fly"
+animation = &"death"
 
 [node name="killbox" type="Area2D" parent="."]
 
@@ -93,9 +92,10 @@ metadata/_edit_lock_ = true
 [node name="demagebox" type="Area2D" parent="."]
 
 [node name="demagebox" type="CollisionShape2D" parent="demagebox"]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_yq1qu")
-one_way_collision_margin = 0.0
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_n2jh5")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="killbox" to="." method="_killbox_body_entered"]
+[connection signal="body_exited" from="killbox" to="." method="_on_killbox_body_exited"]
 [connection signal="body_entered" from="demagebox" to="." method="_on_demagebox_body_entered"]
