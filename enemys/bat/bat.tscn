@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bur86ps8m56p1" path="res://enemys/deathAnimation/enemy-death-6.png" id="7_8l4pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rkln"]
-size = Vector2(14, 16)
+size = Vector2(12.9999, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_itx76"]
 animations = [{
@@ -73,7 +73,7 @@ size = Vector2(18, 13)
 script = ExtResource("1_d08t4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.6524e-07, -9)
+position = Vector2(1.19209e-07, -8.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6rkln")
 

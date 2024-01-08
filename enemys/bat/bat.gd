@@ -19,7 +19,6 @@ func _process(delta):
 		get_node("AnimatedSprite2D").flip_h = false
 		direction = -1
 	velocity.x = direction * SPEED
-	velocity.y  = 0
 	move_and_slide()
 		
 
