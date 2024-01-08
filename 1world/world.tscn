@@ -450,12 +450,12 @@ layer_0/tile_data = PackedInt32Array(2555904, 65536, 5, 2621440, 65536, 5, 26869
 [node name="players" type="Node2D" parent="."]
 
 [node name="Player" parent="players" instance=ExtResource("2_xw7nu")]
-position = Vector2(152, 378)
+position = Vector2(467, 444)
 
 [node name="mobs" type="Node" parent="."]
 
 [node name="Frog" parent="mobs" instance=ExtResource("5_hie4j")]
-position = Vector2(282, 575)
+position = Vector2(551, 584)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

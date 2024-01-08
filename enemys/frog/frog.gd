@@ -3,6 +3,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var SPEED = 50
 const JUMP_VELOCITY = -250.0
+const REJECT = -300
 var player 
 var chase = false 
 
@@ -10,6 +11,7 @@ func _ready():
 	get_node("AnimatedSprite2D").play("idle")
 
 func _physics_process(delta):
+	
 	
 	velocity.y += (gravity-gravity/3) * delta
 	if chase == true: 
@@ -33,7 +35,6 @@ func _physics_process(delta):
 				get_node("AnimatedSprite2D").play("idle")
 			velocity.x = lerp(velocity.x, 0.0, 1);
 		else:
-			self.get_node("Frog").disabled = true;
 			velocity.y = 0
 			velocity.x = 0
 	move_and_slide()
@@ -49,6 +50,8 @@ func _player_exited(body):
 func _on_death_body_entered(body):
 	if body.name == "Player":
 		chase = false
+		get_node("Frog").disabled = true;
+		body.velocity.y = REJECT
 		get_node("AnimatedSprite2D").play("death")
 		await get_node("AnimatedSprite2D").animation_finished
 		self.queue_free()

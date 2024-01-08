@@ -77,10 +77,10 @@ position = Vector2(1.19209e-07, -8.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6rkln")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Bat" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -17)
 sprite_frames = SubResource("SpriteFrames_itx76")
-animation = &"fly"
+animation = &"death"
 
 [node name="killbox" type="Area2D" parent="."]
 
