@@ -467,4 +467,4 @@ theme_override_font_sizes/font_size = 24
 script = ExtResource("6_pr0bk")
 
 [node name="bat" parent="." instance=ExtResource("7_carpt")]
-position = Vector2(248, 310)
+position = Vector2(401, 308)
