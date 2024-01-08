@@ -34,6 +34,7 @@ func _physics_process(delta):
 			
 	move_and_slide()
 
+
 func side(direction):
 	if direction == -1:
 		get_node("AnimatedSprite2D").flip_h = true

@@ -1,24 +1,27 @@
 extends CharacterBody2D
 
 var health = 6
-var SPEED = 40
-var direction_x = randi_range(0, 1) 
-const LEFT_BORDER = 150
+var direction_x
+
+const LEFT_BORDER = 250
 const RIGHT_BORDER = 550
+const SPEED = 40
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	get_node("AnimatedSprite2D").flip_h = true
+	direction_x = randi_range(0, 1)
+	if direction_x == 0:
+		direction_x = -1;
 	get_node("AnimatedSprite2D").play("fly")
 
 func _process(delta):
-	print(direction_x)
+	
 	get_node("AnimatedSprite2D").play("fly")
 	side(direction_x)
 	velocity.x = direction_x * SPEED
-	#velocity.y = 0
+	velocity.y = 0
 	
 	if  position.x < LEFT_BORDER:
 		direction_x = 1
