@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rkln"]
 size = Vector2(12.9999, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_itx76"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_376ry"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -70,7 +70,11 @@ height = 18.0
 size = Vector2(18, 13)
 
 [node name="bat" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_d08t4")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.19209e-07, -8.5)
@@ -79,10 +83,12 @@ shape = SubResource("RectangleShape2D_6rkln")
 
 [node name="Bat" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -17)
-sprite_frames = SubResource("SpriteFrames_itx76")
+sprite_frames = SubResource("SpriteFrames_376ry")
 animation = &"death"
 
 [node name="killbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="killbox" type="CollisionShape2D" parent="killbox"]
 position = Vector2(0, -15)
@@ -91,6 +97,8 @@ shape = SubResource("CapsuleShape2D_geex2")
 metadata/_edit_lock_ = true
 
 [node name="demagebox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="demagebox" type="CollisionShape2D" parent="demagebox"]
 position = Vector2(0, -7.5)

@@ -40,24 +40,23 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _player_entered(body): 
-	if body.name == "Player":
+	if body is Player:
 		chase = true;
 
 func _player_exited(body):
-	if body.name == "Player":
+	if body is Player:
 		chase = false
 
 func _on_death_body_entered(body):
-	if body.name == "Player":
+	if body is Player:
 		chase = false
-		get_node("Frog").disabled = true;
 		body.velocity.y = REJECT
 		get_node("AnimatedSprite2D").play("death")
 		await get_node("AnimatedSprite2D").animation_finished
 		self.queue_free()
 
 func _on_deamge_body_entered(body):
-	if body.name == "Player":
+	if body is Player:
 		body.health -= 3
 		if body.health <= 0:
 			body.queue_free()

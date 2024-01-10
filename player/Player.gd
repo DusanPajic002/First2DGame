@@ -1,4 +1,8 @@
 extends CharacterBody2D
+class_name Player
+# Tutemic
+# GDcquest
+#Hearth beast
 
 var health = 30
 const SPEED = 180

@@ -110,6 +110,8 @@ size = Vector2(19, 8)
 size = Vector2(25, 14)
 
 [node name="Frog" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_lhe48")
 
 [node name="Frog" type="CollisionShape2D" parent="."]
@@ -123,18 +125,24 @@ animation = &"idle"
 metadata/_edit_lock_ = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="chaseBox" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_mow1u")
 
 [node name="death" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="killBox" type="CollisionShape2D" parent="death"]
 position = Vector2(0.5, -13)
 shape = SubResource("RectangleShape2D_ly1y8")
 
 [node name="demage" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="demageBox" type="CollisionShape2D" parent="demage"]
 position = Vector2(0.5, -6)
